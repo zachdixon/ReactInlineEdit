@@ -1,11 +1,13 @@
 {
   "name": "react-edit-inline",
   "version": "1.0.8",
-  "description": "A simple inline text editor for React with ECMAScript 6 + JSX Harmony syntax",
+  "description":
+    "A simple inline text editor for React with ECMAScript 6 + JSX Harmony syntax",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -f index.js; babel --stage 0 index.jsx --out-file index.js && npm run build-demo",
+    "build":
+      "rm -f index.js; babel --stage 0 index.jsx --out-file index.js && npm run build-demo",
     "build-demo": "rm -f demo/index.js; webpack demo/index.jsx demo/index.js",
     "prepublish": "npm run build"
   },
@@ -13,14 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/kaivi/ReactInlineEdit.git"
   },
-  "keywords": [
-    "react",
-    "reactjs",
-    "editor",
-    "inline",
-    "input",
-    "form"
-  ],
+  "keywords": ["react", "reactjs", "editor", "inline", "input", "form"],
   "author": "Kai Vik <kvi@ieee.org>",
   "license": "MIT",
   "bugs": {
@@ -28,7 +23,7 @@
   },
   "homepage": "https://github.com/kaivi/ReactInlineEdit#readme",
   "peerDependencies": {
-    "react": "15.5.x"
+    "react": "15.5.x || 16.x.x"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",
@@ -40,6 +35,6 @@
     "webpack": "^1.12.11"
   },
   "dependencies": {
-    "prop-types": "^15.5.x"
+    "prop-types": "^15.5.x || 16.x.x"
   }
 }
