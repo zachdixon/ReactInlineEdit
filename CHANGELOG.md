@@ -1,3 +1,17 @@
+
+1.0.8 / 2016-11-07
+==================
+* Merged PR [#26](https://github.com/kaivi/ReactInlineEdit/pull/26)
+  - Remove onReturn props From Element
+
+1.0.7 / 2016-04-28
+==================
+
+* Merged PR [#16](https://github.com/kaivi/ReactInlineEdit/pull/16)
+  - Implement option to disable editing
+* Merged PR [#17](https://github.com/kaivi/ReactInlineEdit/pull/16)
+  - Update peer dependencies to allow React 15.x.x
+
 1.0.6 / 2016-01-25
 ==================
 

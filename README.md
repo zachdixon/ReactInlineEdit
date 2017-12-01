@@ -1,12 +1,12 @@
 # Inline Edit Component for React
 
-Before you continue, check out a successor to this repo: [React Inline Edit Kit](http://kaivi.github.io/riek/). It is more functional, and will be maintained in future.
+Before you continue, check out a successor to this repo: [React Inline Edit Kit](https://github.com/kaivi/riek). It is more functional, and will be maintained in future.
 
 This is a simple React component for in-place text editing. It turns into an `<input />` when focused, and tries to validate and save input on <kbd>Enter</kbd> or `blur`. <kbd>Esc</kbd> works as well for cancelling.
 
 ![Example animation gif](http://i.imgur.com/8vig5m1.gif)
 
-Watch a [demo](https://cdn.rawgit.com/kaivi/ReactInlineEdit/master/demo/index.html), then check out [demo/index.jsx](demo/index.jsx) for a quick example.
+Watch a [demo](http://htmlpreview.github.io/?https://github.com/kaivi/ReactInlineEdit/blob/master/demo/index.html), then check out [demo/index.jsx](demo/index.jsx) for a quick example.
 
 ### Installation
 
@@ -25,6 +25,7 @@ Watch a [demo](https://cdn.rawgit.com/kaivi/ReactInlineEdit/master/demo/index.ht
 - `maxLength`:_number_ maximum text length, **default** `256`
 - `editingElement`:_string_ element name to use when in edit mode (DOM must have `value` property) **default** `input`
 - `staticElement`:_string_ element name for displaying data **default** `span`
+- `editing`:_boolean_ If true, element will be in edit mode
 - `tabIndex`:_number_ tab index used for focusing with TAB key **default** `0`
 - `stopPropagation`:_boolean_ If true, the event onClick will not be further propagated.
 
