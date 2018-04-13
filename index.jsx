@@ -23,7 +23,7 @@ export default class InlineEdit extends React.Component {
     tabIndex: PropTypes.number,
     isDisabled: PropTypes.bool,
     editing: PropTypes.bool,
-    activateOnDoubleClick: PropTypes.bool
+    editOnDoubleClick: PropTypes.bool
   };
 
   static defaultProps = {
@@ -34,7 +34,7 @@ export default class InlineEdit extends React.Component {
     tabIndex: 0,
     isDisabled: false,
     editing: false,
-    activateOnDoubleClick: false
+    editOnDoubleClick: false
   };
 
   state = {
@@ -150,8 +150,8 @@ export default class InlineEdit extends React.Component {
       return (
         <Element
           className={this.props.className}
-          onDblClick={this.props.activateOnDoubleClick && this.startEditing}
-          onClick={!this.props.activateOnDoubleClick && this.startEditing}
+          onDoubleClick={this.props.editOnDoubleClick && this.startEditing}
+          onClick={!this.props.editOnDoubleClick && this.startEditing}
           tabIndex={this.props.tabIndex}
           style={this.props.style}
         >
