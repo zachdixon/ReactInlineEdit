@@ -144,22 +144,22 @@
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () {
-	    function defineProperties(target, props) {
-	        for (var i = 0; i < props.length; i++) {
-	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	        }
-	    }return function (Constructor, protoProps, staticProps) {
-	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	    };
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	var _react = __webpack_require__(2);
@@ -175,182 +175,185 @@
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	function _interopRequireDefault(obj) {
-	    return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _classCallCheck(instance, Constructor) {
-	    if (!(instance instanceof Constructor)) {
-	        throw new TypeError("Cannot call a class as a function");
-	    }
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	function _possibleConstructorReturn(self, call) {
-	    if (!self) {
-	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	    }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
 	function _inherits(subClass, superClass) {
-	    if (typeof superClass !== "function" && superClass !== null) {
-	        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
 	function selectInputText(element) {
-	    element.setSelectionRange(0, element.value.length);
+	  element.setSelectionRange(0, element.value.length);
 	}
 
 	var InlineEdit = function (_React$Component) {
-	    _inherits(InlineEdit, _React$Component);
+	  _inherits(InlineEdit, _React$Component);
 
-	    function InlineEdit() {
-	        var _ref;
+	  function InlineEdit() {
+	    var _ref;
 
-	        var _temp, _this, _ret;
+	    var _temp, _this, _ret;
 
-	        _classCallCheck(this, InlineEdit);
+	    _classCallCheck(this, InlineEdit);
 
-	        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	            args[_key] = arguments[_key];
-	        }
-
-	        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = InlineEdit.__proto__ || Object.getPrototypeOf(InlineEdit)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-	            editing: _this.props.editing,
-	            text: _this.props.text,
-	            minLength: _this.props.minLength,
-	            maxLength: _this.props.maxLength
-	        }, _this.startEditing = function (e) {
-	            if (_this.props.stopPropagation) {
-	                e.stopPropagation();
-	            }
-	            _this.setState({ editing: true, text: _this.props.text });
-	        }, _this.finishEditing = function () {
-	            if (_this.isInputValid(_this.state.text) && _this.props.text != _this.state.text) {
-	                _this.commitEditing();
-	            } else if (_this.props.text === _this.state.text || !_this.isInputValid(_this.state.text)) {
-	                _this.cancelEditing();
-	            }
-	        }, _this.cancelEditing = function () {
-	            _this.setState({ editing: false, text: _this.props.text });
-	        }, _this.commitEditing = function () {
-	            _this.setState({ editing: false, text: _this.state.text });
-	            var newProp = {};
-	            newProp[_this.props.paramName] = _this.state.text;
-	            _this.props.change(newProp);
-	        }, _this.clickWhenEditing = function (e) {
-	            if (_this.props.stopPropagation) {
-	                e.stopPropagation();
-	            }
-	        }, _this.isInputValid = function (text) {
-	            return text.length >= _this.state.minLength && text.length <= _this.state.maxLength;
-	        }, _this.keyDown = function (event) {
-	            if (event.keyCode === 13) {
-	                _this.finishEditing();
-	            } else if (event.keyCode === 27) {
-	                _this.cancelEditing();
-	            }
-	        }, _this.textChanged = function (event) {
-	            _this.setState({
-	                text: event.target.value.trim()
-	            });
-	        }, _temp), _possibleConstructorReturn(_this, _ret);
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
 	    }
 
-	    _createClass(InlineEdit, [{
-	        key: 'componentWillMount',
-	        value: function componentWillMount() {
-	            this.isInputValid = this.props.validate || this.isInputValid;
-	            // Warn about deprecated elements
-	            if (this.props.element) {
-	                console.warn('`element` prop is deprecated: instead pass editingElement or staticElement to InlineEdit component');
-	            }
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            var isTextChanged = nextProps.text !== this.props.text;
-	            var isEditingChanged = nextProps.editing !== this.props.editing;
-	            var nextState = {};
-	            if (isTextChanged) {
-	                nextState.text = nextProps.text;
-	            }
-	            if (isEditingChanged) {
-	                nextState.editing = nextProps.editing;
-	            }
-	            if (isTextChanged || isEditingChanged) {
-	                this.setState(nextState);
-	            }
-	        }
-	    }, {
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate(prevProps, prevState) {
-	            var inputElem = _reactDom2.default.findDOMNode(this.refs.input);
-	            if (this.state.editing && !prevState.editing) {
-	                inputElem.focus();
-	                selectInputText(inputElem);
-	            } else if (this.state.editing && prevProps.text != this.props.text) {
-	                this.finishEditing();
-	            }
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            if (this.props.isDisabled) {
-	                var Element = this.props.element || this.props.staticElement;
-	                return _react2.default.createElement(Element, {
-	                    className: this.props.className,
-	                    style: this.props.style }, this.state.text || this.props.placeholder);
-	            } else if (!this.state.editing) {
-	                var _Element = this.props.element || this.props.staticElement;
-	                return _react2.default.createElement(_Element, {
-	                    className: this.props.className,
-	                    onClick: this.startEditing,
-	                    tabIndex: this.props.tabIndex,
-	                    style: this.props.style }, this.state.text || this.props.placeholder);
-	            } else {
-	                var _Element2 = this.props.element || this.props.editingElement;
-	                return _react2.default.createElement(_Element2, {
-	                    onClick: this.clickWhenEditing,
-	                    onKeyDown: this.keyDown,
-	                    onBlur: this.finishEditing,
-	                    className: this.props.activeClassName,
-	                    placeholder: this.props.placeholder,
-	                    defaultValue: this.state.text,
-	                    onChange: this.textChanged,
-	                    style: this.props.style,
-	                    ref: 'input' });
-	            }
-	        }
-	    }]);
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = InlineEdit.__proto__ || Object.getPrototypeOf(InlineEdit)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      editing: _this.props.editing,
+	      text: _this.props.text,
+	      minLength: _this.props.minLength,
+	      maxLength: _this.props.maxLength
+	    }, _this.startEditing = function (e) {
+	      if (_this.props.stopPropagation) {
+	        e.stopPropagation();
+	      }
+	      _this.setState({ editing: true, text: _this.props.text });
+	    }, _this.finishEditing = function () {
+	      if (_this.isInputValid(_this.state.text) && _this.props.text != _this.state.text) {
+	        _this.commitEditing();
+	      } else if (_this.props.text === _this.state.text || !_this.isInputValid(_this.state.text)) {
+	        _this.cancelEditing();
+	      }
+	    }, _this.cancelEditing = function () {
+	      _this.setState({ editing: false, text: _this.props.text });
+	    }, _this.commitEditing = function () {
+	      _this.setState({ editing: false, text: _this.state.text });
+	      var newProp = {};
+	      newProp[_this.props.paramName] = _this.state.text;
+	      _this.props.change(newProp);
+	    }, _this.clickWhenEditing = function (e) {
+	      if (_this.props.stopPropagation) {
+	        e.stopPropagation();
+	      }
+	    }, _this.isInputValid = function (text) {
+	      return text.length >= _this.state.minLength && text.length <= _this.state.maxLength;
+	    }, _this.keyDown = function (event) {
+	      if (event.keyCode === 13) {
+	        _this.finishEditing();
+	      } else if (event.keyCode === 27) {
+	        _this.cancelEditing();
+	      }
+	    }, _this.textChanged = function (event) {
+	      _this.setState({
+	        text: event.target.value.trim()
+	      });
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
 
-	    return InlineEdit;
+	  _createClass(InlineEdit, [{
+	    key: "componentWillMount",
+	    value: function componentWillMount() {
+	      this.isInputValid = this.props.validate || this.isInputValid;
+	      // Warn about deprecated elements
+	      if (this.props.element) {
+	        console.warn("`element` prop is deprecated: instead pass editingElement or staticElement to InlineEdit component");
+	      }
+	    }
+	  }, {
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(nextProps) {
+	      var isTextChanged = nextProps.text !== this.props.text;
+	      var isEditingChanged = nextProps.editing !== this.props.editing;
+	      var nextState = {};
+	      if (isTextChanged) {
+	        nextState.text = nextProps.text;
+	      }
+	      if (isEditingChanged) {
+	        nextState.editing = nextProps.editing;
+	      }
+	      if (isTextChanged || isEditingChanged) {
+	        this.setState(nextState);
+	      }
+	    }
+	  }, {
+	    key: "componentDidUpdate",
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      var inputElem = _reactDom2.default.findDOMNode(this.refs.input);
+	      if (this.state.editing && !prevState.editing) {
+	        inputElem.focus();
+	        selectInputText(inputElem);
+	      } else if (this.state.editing && prevProps.text != this.props.text) {
+	        this.finishEditing();
+	      }
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      if (this.props.isDisabled) {
+	        var Element = this.props.element || this.props.staticElement;
+	        return _react2.default.createElement(Element, { className: this.props.className, style: this.props.style }, this.state.text || this.props.placeholder);
+	      } else if (!this.state.editing) {
+	        var _Element = this.props.element || this.props.staticElement;
+	        return _react2.default.createElement(_Element, {
+	          className: this.props.className,
+	          onDoubleClick: this.props.editOnDoubleClick && this.startEditing,
+	          onClick: !this.props.editOnDoubleClick && this.startEditing,
+	          tabIndex: this.props.tabIndex,
+	          style: this.props.style
+	        }, this.state.text || this.props.placeholder);
+	      } else {
+	        var _Element2 = this.props.element || this.props.editingElement;
+	        return _react2.default.createElement(_Element2, {
+	          onClick: this.clickWhenEditing,
+	          onKeyDown: this.keyDown,
+	          onBlur: this.finishEditing,
+	          className: this.props.activeClassName,
+	          placeholder: this.props.placeholder,
+	          defaultValue: this.state.text,
+	          onChange: this.textChanged,
+	          style: this.props.style,
+	          ref: "input"
+	        });
+	      }
+	    }
+	  }]);
+
+	  return InlineEdit;
 	}(_react2.default.Component);
 
 	InlineEdit.propTypes = {
-	    text: _propTypes2.default.string.isRequired,
-	    paramName: _propTypes2.default.string.isRequired,
-	    change: _propTypes2.default.func.isRequired,
-	    placeholder: _propTypes2.default.string,
-	    className: _propTypes2.default.string,
-	    activeClassName: _propTypes2.default.string,
-	    minLength: _propTypes2.default.number,
-	    maxLength: _propTypes2.default.number,
-	    validate: _propTypes2.default.func,
-	    style: _propTypes2.default.object,
-	    editingElement: _propTypes2.default.string,
-	    staticElement: _propTypes2.default.string,
-	    tabIndex: _propTypes2.default.number,
-	    isDisabled: _propTypes2.default.bool,
-	    editing: _propTypes2.default.bool
+	  text: _propTypes2.default.string.isRequired,
+	  paramName: _propTypes2.default.string.isRequired,
+	  change: _propTypes2.default.func.isRequired,
+	  placeholder: _propTypes2.default.string,
+	  className: _propTypes2.default.string,
+	  activeClassName: _propTypes2.default.string,
+	  minLength: _propTypes2.default.number,
+	  maxLength: _propTypes2.default.number,
+	  validate: _propTypes2.default.func,
+	  style: _propTypes2.default.object,
+	  editingElement: _propTypes2.default.string,
+	  staticElement: _propTypes2.default.string,
+	  tabIndex: _propTypes2.default.number,
+	  isDisabled: _propTypes2.default.bool,
+	  editing: _propTypes2.default.bool,
+	  editOnDoubleClick: _propTypes2.default.bool
 	};
 	InlineEdit.defaultProps = {
-	    minLength: 1,
-	    maxLength: 256,
-	    editingElement: 'input',
-	    staticElement: 'span',
-	    tabIndex: 0,
-	    isDisabled: false,
-	    editing: false
+	  minLength: 1,
+	  maxLength: 256,
+	  editingElement: "input",
+	  staticElement: "span",
+	  tabIndex: 0,
+	  isDisabled: false,
+	  editing: false,
+	  editOnDoubleClick: false
 	};
 	exports.default = InlineEdit;
 
@@ -371,12 +374,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	if (process.env.NODE_ENV !== 'production') {
@@ -398,7 +399,7 @@
 	} else {
 	  // By explicitly using `prop-types` you are opting into new production behavior.
 	  // http://fb.me/prop-types-in-prod
-	  module.exports = __webpack_require__(12)();
+	  module.exports = __webpack_require__(13)();
 	}
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
@@ -598,12 +599,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -611,9 +610,10 @@
 	var emptyFunction = __webpack_require__(7);
 	var invariant = __webpack_require__(8);
 	var warning = __webpack_require__(9);
+	var assign = __webpack_require__(10);
 
-	var ReactPropTypesSecret = __webpack_require__(10);
-	var checkPropTypes = __webpack_require__(11);
+	var ReactPropTypesSecret = __webpack_require__(11);
+	var checkPropTypes = __webpack_require__(12);
 
 	module.exports = function(isValidElement, throwOnDirectAccess) {
 	  /* global Symbol */
@@ -709,7 +709,8 @@
 	    objectOf: createObjectOfTypeChecker,
 	    oneOf: createEnumTypeChecker,
 	    oneOfType: createUnionTypeChecker,
-	    shape: createShapeTypeChecker
+	    shape: createShapeTypeChecker,
+	    exact: createStrictShapeTypeChecker,
 	  };
 
 	  /**
@@ -924,7 +925,7 @@
 	      if (typeof checker !== 'function') {
 	        warning(
 	          false,
-	          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
+	          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
 	          'received %s at index %s.',
 	          getPostfixForTypeWarning(checker),
 	          i
@@ -975,6 +976,36 @@
 	      }
 	      return null;
 	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createStrictShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      // We need to check all keys in case some are required but missing from
+	      // props.
+	      var allKeys = assign({}, props[propName], shapeTypes);
+	      for (var key in allKeys) {
+	        var checker = shapeTypes[key];
+	        if (!checker) {
+	          return new PropTypeError(
+	            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+	            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+	            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+	          );
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+
 	    return createChainableTypeChecker(validate);
 	  }
 
@@ -1120,11 +1151,9 @@
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * 
 	 */
@@ -1161,11 +1190,9 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 
@@ -1221,12 +1248,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2014-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 
@@ -1244,45 +1269,43 @@
 	var warning = emptyFunction;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  (function () {
-	    var printWarning = function printWarning(format) {
-	      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	        args[_key - 1] = arguments[_key];
+	  var printWarning = function printWarning(format) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+
+	    var argIndex = 0;
+	    var message = 'Warning: ' + format.replace(/%s/g, function () {
+	      return args[argIndex++];
+	    });
+	    if (typeof console !== 'undefined') {
+	      console.error(message);
+	    }
+	    try {
+	      // --- Welcome to debugging React ---
+	      // This error was thrown as a convenience so that you can use this stack
+	      // to find the callsite that caused this warning to fire.
+	      throw new Error(message);
+	    } catch (x) {}
+	  };
+
+	  warning = function warning(condition, format) {
+	    if (format === undefined) {
+	      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+	    }
+
+	    if (format.indexOf('Failed Composite propType: ') === 0) {
+	      return; // Ignore CompositeComponent proptype check.
+	    }
+
+	    if (!condition) {
+	      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        args[_key2 - 2] = arguments[_key2];
 	      }
 
-	      var argIndex = 0;
-	      var message = 'Warning: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      });
-	      if (typeof console !== 'undefined') {
-	        console.error(message);
-	      }
-	      try {
-	        // --- Welcome to debugging React ---
-	        // This error was thrown as a convenience so that you can use this stack
-	        // to find the callsite that caused this warning to fire.
-	        throw new Error(message);
-	      } catch (x) {}
-	    };
-
-	    warning = function warning(condition, format) {
-	      if (format === undefined) {
-	        throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-	      }
-
-	      if (format.indexOf('Failed Composite propType: ') === 0) {
-	        return; // Ignore CompositeComponent proptype check.
-	      }
-
-	      if (!condition) {
-	        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-	          args[_key2 - 2] = arguments[_key2];
-	        }
-
-	        printWarning.apply(undefined, [format].concat(args));
-	      }
-	    };
-	  })();
+	      printWarning.apply(undefined, [format].concat(args));
+	    }
+	  };
 	}
 
 	module.exports = warning;
@@ -1292,13 +1315,107 @@
 /* 10 */
 /***/ (function(module, exports) {
 
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
+
+	'use strict';
+	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+
+		return Object(val);
+	}
+
+	function shouldUseNative() {
+		try {
+			if (!Object.assign) {
+				return false;
+			}
+
+			// Detect buggy property enumeration order in older V8 versions.
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			test1[5] = 'de';
+			if (Object.getOwnPropertyNames(test1)[0] === '5') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test2 = {};
+			for (var i = 0; i < 10; i++) {
+				test2['_' + String.fromCharCode(i)] = i;
+			}
+			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+				return test2[n];
+			});
+			if (order2.join('') !== '0123456789') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test3 = {};
+			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+				test3[letter] = letter;
+			});
+			if (Object.keys(Object.assign({}, test3)).join('') !==
+					'abcdefghijklmnopqrst') {
+				return false;
+			}
+
+			return true;
+		} catch (err) {
+			// We don't expect any of the above to throw, but better to be safe.
+			return false;
+		}
+	}
+
+	module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+		var from;
+		var to = toObject(target);
+		var symbols;
+
+		for (var s = 1; s < arguments.length; s++) {
+			from = Object(arguments[s]);
+
+			for (var key in from) {
+				if (hasOwnProperty.call(from, key)) {
+					to[key] = from[key];
+				}
+			}
+
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
+				for (var i = 0; i < symbols.length; i++) {
+					if (propIsEnumerable.call(from, symbols[i])) {
+						to[symbols[i]] = from[symbols[i]];
+					}
+				}
+			}
+		}
+
+		return to;
+	};
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
 	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -1309,16 +1426,14 @@
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -1326,7 +1441,7 @@
 	if (process.env.NODE_ENV !== 'production') {
 	  var invariant = __webpack_require__(8);
 	  var warning = __webpack_require__(9);
-	  var ReactPropTypesSecret = __webpack_require__(10);
+	  var ReactPropTypesSecret = __webpack_require__(11);
 	  var loggedTypeFailures = {};
 	}
 
@@ -1352,7 +1467,7 @@
 	        try {
 	          // This is intentionally an invariant that gets caught. It's the same
 	          // behavior as without this statement except with a better message.
-	          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+	          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
 	          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
 	        } catch (ex) {
 	          error = ex;
@@ -1377,23 +1492,21 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
 
 	var emptyFunction = __webpack_require__(7);
 	var invariant = __webpack_require__(8);
-	var ReactPropTypesSecret = __webpack_require__(10);
+	var ReactPropTypesSecret = __webpack_require__(11);
 
 	module.exports = function() {
 	  function shim(props, propName, componentName, location, propFullName, secret) {
@@ -1431,7 +1544,8 @@
 	    objectOf: getShim,
 	    oneOf: getShim,
 	    oneOfType: getShim,
-	    shape: getShim
+	    shape: getShim,
+	    exact: getShim
 	  };
 
 	  ReactPropTypes.checkPropTypes = emptyFunction;
