@@ -150,8 +150,12 @@ export default class InlineEdit extends React.Component {
       return (
         <Element
           className={this.props.className}
-          onDoubleClick={this.props.editOnDoubleClick && this.startEditing}
-          onClick={!this.props.editOnDoubleClick && this.startEditing}
+          onDoubleClick={
+            this.props.editOnDoubleClick ? this.startEditing : undefined
+          }
+          onClick={
+            !this.props.editOnDoubleClick ? this.startEditing : undefined
+          }
           tabIndex={this.props.tabIndex}
           style={this.props.style}
         >

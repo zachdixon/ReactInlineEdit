@@ -302,8 +302,8 @@
 	        var _Element = this.props.element || this.props.staticElement;
 	        return _react2.default.createElement(_Element, {
 	          className: this.props.className,
-	          onDoubleClick: this.props.editOnDoubleClick && this.startEditing,
-	          onClick: !this.props.editOnDoubleClick && this.startEditing,
+	          onDoubleClick: this.props.editOnDoubleClick ? this.startEditing : undefined,
+	          onClick: !this.props.editOnDoubleClick ? this.startEditing : undefined,
 	          tabIndex: this.props.tabIndex,
 	          style: this.props.style
 	        }, this.state.text || this.props.placeholder);
